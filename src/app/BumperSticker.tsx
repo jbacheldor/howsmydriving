@@ -27,9 +27,9 @@ const BumperSticker: React.FC = () => {
         };  
     }
 
-    const updateValues = (e: HTMLTextAreaElement) => {
-        setReview(e.target.value)
-    }
+    // const updateValues = (e: HTMLTextAreaElement | HTMLInputElement | HTMLEve) => {
+    //     setReview(e?.target.value)
+    // }
 
     return (
         <div id="warning-container">
@@ -40,7 +40,7 @@ const BumperSticker: React.FC = () => {
         <div id="bottom-container">
           <label>
             REVIEW HERE:
-            <textarea onChange={(e: HTMLTextAreaElement)=>updateValues(e)}/>
+            <textarea onChange={(e: any)=>setReview(e.target.value)}/>
           </label>
         </div>
         <div id="button-container">
