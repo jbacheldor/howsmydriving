@@ -4,19 +4,18 @@ import './bumperstick.css'
 
 const BumperSticker: React.FC = () => {
 
-    const [review, setReview] = useState()
+    const [review, setReview] = useState("")
 
     const pathName = process.env.BASE_URL
 
     async function submitReviews() {
-        console.log('heyyyy')
         try {
           const response = await fetch(`${pathName}/server/submitreview`, {
               method: 'POST',
               body: JSON.stringify({review}),
           });
           const result = await response.json();
-          console.log('result', result)
+          setReview("")
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -40,7 +39,7 @@ const BumperSticker: React.FC = () => {
         <div id="bottom-container">
           <label>
             REVIEW HERE:
-            <textarea onChange={(e: any)=>setReview(e.target.value)}/>
+            <textarea value={review} onChange={(e: any)=>{setReview(e.target.value)}}/>
           </label>
         </div>
         <div id="button-container">
